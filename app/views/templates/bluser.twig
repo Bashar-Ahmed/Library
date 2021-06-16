@@ -1,0 +1,61 @@
+{% extends "templates/base.twig" %}
+
+{% block css1 %}"/assets/styles/booklist.css"{% endblock %}
+
+{% block title1 %}CENTRAL LIBRARY{% endblock %}
+
+{% block body1 %}
+
+<nav class="navbar navbar-dark bg-dark">
+
+    <li class="nav-item">
+        <span id="email">Logged in as : <span>{{ email }}</span></span>
+    </li>
+    <li class="nav-item">
+        <form action="/" method="POST" class="logout-form">
+            <button class="btn btn-secondary logout-btn">LOGOUT</button>
+        </form>
+    </li>
+
+</nav>
+<h1>CENTRAL LIBRARY</h1>
+    <table class="table table-dark table-striped" border="1">
+        <tr>
+            <th>Book ID</th>
+            <th>Book Name</th>
+            <th>Author Name</th>
+            <th>Availibity</th>
+            <th>Request</th>
+        </tr>
+        
+        {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+
+            {% if book.status!=0 or (book.reqby!=0 and book.reqby!=id) %}
+                <td class="avail">Unavailable</td>
+            {% elseif book.reqby==id %}
+                <td class="avail">Requested</td>
+            {% else %}
+                <td class="avail">Available</td>
+            {% endif %}
+                
+            {% if book.status==0 and book.reqby==0 %}
+                <td>
+                    <form action="/booklist-user" method="POST">
+                        <button class="btn btn-outline-primary">Request</button>
+                        <input type="hidden" name="idbook" value="{{ book.id }}">
+                    </form>
+                </td>
+            {% else %}
+                <td></td>
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}
