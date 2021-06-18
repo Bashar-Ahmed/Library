@@ -47,7 +47,7 @@
             {% if book.status==0 and book.reqby==0 %}
                 <td>
                     <form action="/booklist-user" method="POST">
-                        <button class="btn btn-outline-primary">Request</button>
+                        <button class="btn btn-outline-warning">Request</button>
                         <input type="hidden" name="idbook" value="{{ book.id }}">
                     </form>
                 </td>

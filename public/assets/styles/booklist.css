@@ -1,7 +1,8 @@
 body {
-    background-color: burlywood;
+    background-color: #7952B3;
 }
 h1 {
+    font-size: 3rem;
     margin: 30px auto;
 }
 h3 {
@@ -9,6 +10,9 @@ h3 {
     bottom: 10px;
     color: grey;
     margin: 10px auto 10px 30px;
+}
+td,th {
+    text-align: center;
 }
 .logout-form {
     height: 25px;
@@ -24,9 +28,11 @@ h3 {
 .table {
     width: 80%;
 }
+.remove {
+    width: auto;
+}
 #email {
     padding: 5px;
     border-radius: 3px;
-    background-color: dimgray;
-    color: ivory;
+    background-color: #E1E8EB;
 }

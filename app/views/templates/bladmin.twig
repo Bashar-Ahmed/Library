@@ -47,18 +47,18 @@
         {% endfor %}
             
     </table>
-    <table class="table table-dark">
+    
+    <a href="/addbook"><button class="btn btn-lg btn-warning">ADD BOOK</button></a>
+
+    <table class="table remove table-dark">
         <tr>
-            <th style="text-align: center;"><a href="/addbook"><button class="btn btn-lg btn-outline-primary">ADD BOOK</button></a></th>
-        </tr>
-        <tr>
-            <th style="text-align: center;">
+            <td>
                 <form action="/remove" method="POST">
-                    <label for="floatingText">Book ID to remove : </label>
+                    <label for="floatingText">Book ID to Remove : </label>
                     <input type="text" name="bookid">
-                    <button class="btn btn-lg btn-outline-primary">REMOVE BOOK</button>
+                    <button class="btn btn-lg btn-outline-warning">REMOVE BOOK</button>
                 </form>
-            </th>
+            </td>
         </tr>
     </table>
 
