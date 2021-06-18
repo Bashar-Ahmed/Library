@@ -2,17 +2,14 @@
 
 namespace Model;
 
-class Signin {
+class Sign {
 
     public static function check($email) {
         $db = \DB::get_instance();
         $stmt=$db->prepare("SELECT * FROM accounts WHERE email = ?");
         $stmt->execute([$email]);
         $row=$stmt->fetch();
-        if (strlen($row[0])>0)
-            return true;
-        else
-            return false;
+        return $row;
     }
 
     public static function verify($email,$password) {
@@ -20,25 +17,7 @@ class Signin {
         $stmt = $db->prepare("SELECT * FROM accounts WHERE email = ?");
         $stmt->execute([$email]);
         $row = $stmt->fetch();
-        if ($row[2]==$password)
-            return true;
-        else 
-            return false;
-    }
-
-}
-
-class Signup {
-
-    public static function check($email) {
-        $db = \DB::get_instance();
-        $stmt=$db->prepare("SELECT * FROM accounts WHERE email = ?");
-        $stmt->execute([$email]);
-        $row=$stmt->fetch();
-        if (strlen($row[0])>0)
-            return true;
-        else
-            return false;
+        return $row;
     }
 
     public static function insert($email,$password) {
@@ -46,17 +25,13 @@ class Signup {
         $stmt = $db->prepare("INSERT INTO accounts (email,password) VALUES (?,?)");
         $stmt->execute([$email,$password]);
     }
-    
-}
 
-class ID {
-    
     public static function get_id($email) {
         $db = \DB::get_instance();
         $stmt=$db->prepare("SELECT * FROM accounts WHERE email = ?");
         $stmt->execute([$email]);
         $row=$stmt->fetch();
-        return $row[0];
+        return $row;
     }
 
     public static function get_email() {
@@ -64,7 +39,7 @@ class ID {
         $stmt=$db->prepare("SELECT * FROM accounts WHERE id = ?");
         $stmt->execute([$_SESSION['id']]);
         $row=$stmt->fetch();
-        return $row[1];
+        return $row;
     }
     
 }

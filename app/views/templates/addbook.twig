@@ -8,24 +8,19 @@
 
 <h1>CENTRAL LIBRARY</h1>
 
-    <main class="form-signin">
-
-        <form action="/addbook" method="POST">
-            <h1 class="h3 mb-3 fw-normal">ADD BOOK</h1>
-
-            <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="name">
-                <label for="floatingInput"  >Book Name</label>
-            </div>
-
-            <div class="form-floating">
-                <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="author">
-                <label for="floatingPassword">Author Name</label>
-            </div>
-
-            <button class="w-100 btn btn-lg btn-dark" type="submit" onclick="disp()">ADD</button>
-        </form>
-
-    </main>
+<main class="form-signin">
+    <form action="/addbook" method="POST">
+        <h1 class="h3 mb-3 fw-normal">ADD BOOK</h1>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="name">
+            <label for="floatingInput"  >Book Name</label>
+        </div>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="author">
+            <label for="floatingPassword">Author Name</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-dark" type="submit" onclick="disp()">ADD</button>
+    </form>
+</main>
 
 {% endblock %}

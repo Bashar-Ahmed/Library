@@ -1,6 +1,7 @@
 <?php
 
 class DB {
+
     private static $instance;
 
     public static function get_instance() {
@@ -15,4 +16,5 @@ class DB {
         }
         return self::$instance;
     }
+    
 }

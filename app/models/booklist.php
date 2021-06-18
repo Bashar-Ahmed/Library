@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class BLUser {
+class Booklist {
 
     public static function get_all() {
         $db = \DB::get_instance();
@@ -17,10 +17,13 @@ class BLUser {
         $stmt=$db->prepare("SELECT reqby FROM books WHERE id = ?");
         $stmt->execute([$bookid]);
         $rows=$stmt->fetch();
-        if ($rows[0]==0) {
-            $stmt=$db->prepare("UPDATE books SET reqby = ? WHERE id = ?");
-            $stmt->execute([$_SESSION['id'],$bookid]);
-        }
-        header("Location: /booklist-user");
+        return $rows;
     }
+    
+    public static function update($bookid) {
+        $db = \DB::get_instance();
+        $stmt=$db->prepare("UPDATE books SET reqby = ? WHERE id = ?");
+        $stmt->execute([$_SESSION['id'],$bookid]);
+    }
+
 }

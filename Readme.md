@@ -1,13 +1,14 @@
 Run the following commands in your terminal to setup the project
 
--- You must have the LAMP installed on your system
+_You must have the LAMP installed on your system_
 
-1.  git clone https://github.com/Bashar-Ahmed/Library.git
-2.  cd Library
-3.  bash run.sh
-    This will install composer,
-    then open your virtual host config file 
-    where you need to copy paste the following code 
+1.  >git clone https://github.com/Bashar-Ahmed/Library.git
+2.  >cd Library
+3.  >bash run.sh
+
+    This will install composer,<br>
+    then open your virtual host config file<br>
+    where you need to copy paste the following code<br>
     and type in the path to your cloned repository's public directory :
         
         <VirtualHost *:80>
@@ -39,13 +40,13 @@ Run the following commands in your terminal to setup the project
             CustomLog ${APACHE_LOG_DIR}/library.access.log combined
         </VirtualHost>
 
-    Save and Close this file
-    Now, your system hosts file will open
+    Save and Close this file<br>
+    Now, your system hosts file will open<br>
     Insert the following line to the end of the file :
 
         127.0.0.1      library.local
 
     Save and Close this file
 
-Your setup is now complete
-Run "library.local/" on your browser to view the project.
+Your setup is now complete<br>
+Run [Central Library](library.local/) or "library.local/" on your browser to view the project.
