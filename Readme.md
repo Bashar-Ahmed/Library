@@ -41,12 +41,6 @@ _You must have the LAMP installed on your system_
         </VirtualHost>
 
     Save and Close this file<br>
-    Now, your system hosts file will open<br>
-    Insert the following line to the end of the file :
-
-        127.0.0.1      library.local
-
-    Save and Close this file
 
 Your setup is now complete<br>
-Run [Central Library](library.local/) or "library.local/" on your browser to view the project.
+Run "library.local/" on your browser to view the project.
