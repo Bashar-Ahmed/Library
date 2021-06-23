@@ -5,17 +5,14 @@ namespace Controller;
 class Signup {
 
     public function get() {
-        if(!isset($_SESSION['id'])) {
-            echo \View\Loader::make()->render("templates/signup.twig",array(
-                "incorrectPassword"=> false,
-            ));
-        }
-        else {
-            header("Location: /booklist-user");
-        }
+        \Controller\Util::check_session_ifset("/booklist-user","id");
+        echo \View\Loader::make()->render("templates/signup.twig",array(
+            "incorrectPassword"=> false,
+        ));
     }
 
     public function post() {
+        \Controller\Util::check_post("/","email","password");
         $email = $_POST["email"];
         $password = $_POST["password"];
         $row = \Model\Sign::check($email);

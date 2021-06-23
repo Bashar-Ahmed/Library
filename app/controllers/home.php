@@ -5,16 +5,9 @@ namespace Controller;
 class Home {
 
     public function get() { 
-        
-        if(isset($_SESSION['id'])) {
-            header("Location: /booklist-user");
-        }
-        else if(isset($_SESSION['admin'])) {
-            header("Location: /booklist-admin");
-        }
-        else {
-            echo \View\Loader::make()->render("templates/home.twig"); 
-        }
+        \Controller\Util::check_session_ifset("/booklist-admin","admin");
+        \Controller\Util::check_session_ifset("/booklist-user","id");
+        echo \View\Loader::make()->render("templates/home.twig"); 
     }
 
     public function post() {

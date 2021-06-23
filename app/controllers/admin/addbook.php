@@ -5,21 +5,17 @@ namespace Controller;
 class AddBook {
 
     public function get() {
-        if(isset($_SESSION['admin'])) {
-            echo \View\Loader::make()->render("templates/addbook.twig");
-        }
-        else {
-            header("Location: /");
-        }
+        \Controller\Util::check_session_ifnotset("/","admin");
+        echo \View\Loader::make()->render("templates/addbook.twig");
     }
 
     public function post() {
-        if(isset($_SESSION['admin'])) {
-            $name = $_POST["name"];
-            $author = $_POST["author"];
-            \Model\Book::add($name,$author); 
-            header("Location: /booklist-admin");
-        }         
+        \Controller\Util::check_session_ifnotset("/","admin");
+        \Controller\Util::check_post("/","name","author");
+        $name = $_POST["name"];
+        $author = $_POST["author"];
+        \Model\Book::add($name,$author); 
+        header("Location: /booklist-admin");        
     }
 
 }
