@@ -14,10 +14,12 @@ class AddBook {
     }
 
     public function post() {
-        $name = $_POST["name"];
-        $author = $_POST["author"];
-        \Model\Book::add($name,$author); 
-        header("Location: /booklist-admin");         
+        if(isset($_SESSION['admin'])) {
+            $name = $_POST["name"];
+            $author = $_POST["author"];
+            \Model\Book::add($name,$author); 
+            header("Location: /booklist-admin");
+        }         
     }
 
 }

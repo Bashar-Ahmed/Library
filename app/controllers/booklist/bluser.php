@@ -19,12 +19,14 @@ class BLUser {
     }
 
     public function post() {
-        $bookid = $_POST['idbook'];
-        $rows = \Model\Booklist::req($bookid);
-        if($rows[0]==0) {
-            \Model\Booklist::update($_SESSION['id'],$bookid);
+        if(isset($_SESSION['id'])) {
+            $bookid = $_POST['idbook'];
+            $rows = \Model\Booklist::req($bookid);
+            if($rows[0]==0) {
+                \Model\Booklist::update($_SESSION['id'],$bookid);
+            }
+            header("Location: /booklist-user");
         }
-        header("Location: /booklist-user");
     }
 
 }

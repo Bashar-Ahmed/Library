@@ -5,8 +5,10 @@ namespace Controller;
 class Deny {
 
     public function post() {
-        \Model\Book::deny($_POST["bookid"]);   
-        header("Location: /booklist-admin");
+        if(isset($_SESSION['admin'])) {
+            \Model\Book::deny($_POST["bookid"]);   
+            header("Location: /booklist-admin");
+        }
     }
     
 }
