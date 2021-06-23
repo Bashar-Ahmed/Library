@@ -18,7 +18,7 @@ class BLUser {
         \Controller\Util::check_session_ifnotset("/","id");
         $bookid = $_POST['idbook'];
         $rows = \Model\Booklist::req($bookid);
-        if($rows[0]===0) {
+        if($rows[0]==="0") {
             \Model\Booklist::update($_SESSION['id'],$bookid);
         }
         header("Location: /booklist-user");
