@@ -5,9 +5,9 @@ namespace Controller;
 class Signup {
 
     public function get() {
-        if($_SESSION['id']==0) {
+        if(!isset($_SESSION['id'])) {
             echo \View\Loader::make()->render("templates/signup.twig",array(
-                "disp"=> false,
+                "incorrectPassword"=> false,
             ));
         }
         else {
@@ -21,7 +21,7 @@ class Signup {
         $row = \Model\Sign::check($email);
         if(strlen($row[0])>0) {
             echo \View\Loader::make()->render("templates/signup.twig",array(
-                "disp"=> true,
+                "incorrectPassword"=> true,
             ));
         }
         else {

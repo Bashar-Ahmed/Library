@@ -5,9 +5,9 @@ namespace Controller;
 class Signin {
 
     public function get() {
-        if($_SESSION['id']==0) {
+        if(!isset($_SESSION['id'])) {
             echo \View\Loader::make()->render("templates/signin.twig",array(
-                "disp"=> false,
+                "incorrectPassword"=> false,
             ));
         }
         else {
@@ -29,7 +29,7 @@ class Signin {
             }
             else {
                 echo \View\Loader::make()->render("templates/signin.twig",array(
-                    "disp"=> true,
+                    "incorrectPassword"=> true,
                 ));
             }
         }

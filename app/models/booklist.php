@@ -20,10 +20,10 @@ class Booklist {
         return $rows;
     }
     
-    public static function update($bookid) {
+    public static function update($id,$bookid) {
         $db = \DB::get_instance();
         $stmt=$db->prepare("UPDATE books SET reqby = ? WHERE id = ?");
-        $stmt->execute([$_SESSION['id'],$bookid]);
+        $stmt->execute([$id,$bookid]);
     }
 
 }

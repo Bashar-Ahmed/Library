@@ -5,19 +5,21 @@ namespace Controller;
 class Home {
 
     public function get() { 
-        if(!isset($_SESSION['id'])) {
-            $_SESSION['id']=0;
+        
+        if(isset($_SESSION['id'])) {
+            header("Location: /booklist-user");
         }
-        if($_SESSION['id']==0) {
-            echo \View\Loader::make()->render("templates/home.twig");
+        else if(isset($_SESSION['admin'])) {
+            header("Location: /booklist-admin");
         }
         else {
-            header("Location: /booklist-user");
+            echo \View\Loader::make()->render("templates/home.twig"); 
         }
     }
 
     public function post() {
-        $_SESSION['id']=0;
+        unset($_SESSION['id']);
+        unset($_SESSION['admin']);
         header("Location: /");
     }
     

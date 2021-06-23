@@ -34,10 +34,10 @@ class Sign {
         return $row;
     }
 
-    public static function get_email() {
+    public static function get_email($id) {
         $db = \DB::get_instance();
         $stmt=$db->prepare("SELECT * FROM accounts WHERE id = ?");
-        $stmt->execute([$_SESSION['id']]);
+        $stmt->execute([$id]);
         $row=$stmt->fetch();
         return $row;
     }
